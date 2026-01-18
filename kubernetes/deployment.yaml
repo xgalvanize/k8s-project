@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-backend
+  namespace: django
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-backend
+  template:
+    metadata:
+      labels:
+        app: django-backend
+    spec:
+      containers:
+        - name: web
+          image: xgalvanize/django-backend:latest
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: django-config   # <-- your ConfigMap name
+            - secretRef:
+                name: django-secrets  # if you want superuser creds here

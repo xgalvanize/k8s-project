@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env
+.env.*
+
+# Django
+db.sqlite3
+staticfiles/
+media/
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Kubernetes secrets (IMPORTANT)
+kubernetes/secret.yaml
