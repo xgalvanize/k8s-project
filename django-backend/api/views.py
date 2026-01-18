@@ -5,10 +5,15 @@ from .utils.pdf import generate_pdf
 # Create your views here.
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.http import JsonResponse
 
 @api_view(['GET'])
 def health(request):
-    return Response({"status": "ok"})
+    return JsonResponse({"status": "ok"})
+
+
+# def health(request):
+#     return Response({"status": "ok"})
 
 def health_page(request):
     return render(request, 'api/health.html')
