@@ -18,6 +18,18 @@ spec:
           image: xgalvanize/django-backend:latest
           ports:
             - containerPort: 8000
+          readinessProbe:
+            httpGet:
+              path: /health/
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 10
           envFrom:
             - configMapRef:
                 name: django-config   # <-- your ConfigMap name
